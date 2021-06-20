@@ -12,6 +12,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './redux/reducers';
 import thunk from 'redux-thunk';
+import AddScreen from './components/main/Add';
 import firebase from 'firebase';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
@@ -88,7 +89,12 @@ export class App extends Component {
 
     return (
       <Provider store={ store }>
-        <MainScreen />
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName="Landing">
+              <Stack.Screen name="Landing" component={MainScreen} options={{ headerShown: false }}/>
+              <Stack.Screen name="Add" component={AddScreen} />
+            </Stack.Navigator>
+          </NavigationContainer>
       </Provider>
     )
     
