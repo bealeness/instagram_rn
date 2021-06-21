@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { API_KEY, SENDER_ID, APP_ID, MEASUREMENT_ID } from 'react-native-dotenv';
+//import { API_KEY, SENDER_ID, APP_ID, MEASUREMENT_ID } from 'react-native-dotenv';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LandingScreen from './components/auth/Landing';
@@ -19,7 +19,7 @@ import firebase from 'firebase';
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const firebaseConfig = {
-  apiKey: API_KEY,
+  apiKey: "AIzaSyCR-o3rIqt1n59gX4cYKMQv4E7LMRSrCco",
   authDomain: "instagram-rn-1503c.firebaseapp.com",
   projectId: "instagram-rn-1503c",
   storageBucket: "instagram-rn-1503c.appspot.com",
@@ -92,7 +92,7 @@ export class App extends Component {
       <Provider store={ store }>
           <NavigationContainer>
             <Stack.Navigator initialRouteName="Landing">
-              <Stack.Screen name="Landing" component={MainScreen} options={{ headerShown: false }}/>
+              <Stack.Screen name="Main" component={MainScreen} />
               <Stack.Screen name="Add" component={AddScreen} navigation={this.props.navigation} />
               <Stack.Screen name="Save" component={SaveScreen} navigation={this.props.navigation} />
             </Stack.Navigator>
