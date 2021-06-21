@@ -3,7 +3,7 @@ import { View, Text  } from 'react-native';
 
 export default function Profile() {
     return (
-        <View>
+        <View style={{ marginTop: 20 }}>
             <Text>Profile</Text>
         </View>
     )

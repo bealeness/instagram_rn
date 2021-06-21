@@ -13,6 +13,7 @@ import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './redux/reducers';
 import thunk from 'redux-thunk';
 import AddScreen from './components/main/Add';
+import SaveScreen from './components/main/Save';
 import firebase from 'firebase';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
@@ -22,9 +23,9 @@ const firebaseConfig = {
   authDomain: "instagram-rn-1503c.firebaseapp.com",
   projectId: "instagram-rn-1503c",
   storageBucket: "instagram-rn-1503c.appspot.com",
-  messagingSenderId: SENDER_ID,
-  appId: APP_ID,
-  measurementId: MEASUREMENT_ID
+  messagingSenderId: "909888362629",
+  appId: "1:909888362629:web:ffe578a3845353d5e431ec",
+  measurementId: "G-MJ4N6R57CB"
 };
 
 //initialize firebase - makes sure no other firebase app is running before initializing
@@ -92,7 +93,8 @@ export class App extends Component {
           <NavigationContainer>
             <Stack.Navigator initialRouteName="Landing">
               <Stack.Screen name="Landing" component={MainScreen} options={{ headerShown: false }}/>
-              <Stack.Screen name="Add" component={AddScreen} />
+              <Stack.Screen name="Add" component={AddScreen} navigation={this.props.navigation} />
+              <Stack.Screen name="Save" component={SaveScreen} navigation={this.props.navigation} />
             </Stack.Navigator>
           </NavigationContainer>
       </Provider>
