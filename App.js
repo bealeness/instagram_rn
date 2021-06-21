@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-//import { API_KEY, SENDER_ID, APP_ID, MEASUREMENT_ID } from 'react-native-dotenv';
+import { API_KEY, SENDER_ID, APP_ID, MEASUREMENT_ID } from 'react-native-dotenv';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LandingScreen from './components/auth/Landing';
@@ -19,13 +19,13 @@ import firebase from 'firebase';
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCR-o3rIqt1n59gX4cYKMQv4E7LMRSrCco",
+  apiKey: API_KEY,
   authDomain: "instagram-rn-1503c.firebaseapp.com",
   projectId: "instagram-rn-1503c",
   storageBucket: "instagram-rn-1503c.appspot.com",
-  messagingSenderId: "909888362629",
-  appId: "1:909888362629:web:ffe578a3845353d5e431ec",
-  measurementId: "G-MJ4N6R57CB"
+  messagingSenderId: SENDER_ID,
+  appId: APP_ID,
+  measurementId: MEASUREMENT_ID
 };
 
 //initialize firebase - makes sure no other firebase app is running before initializing
