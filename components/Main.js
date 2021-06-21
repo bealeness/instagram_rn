@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import firebase from 'firebase';
-import { fetchUser, fetchUserPosts } from '../redux/actions/index';
+import { fetchUserFollowing, fetchUser, fetchUserPosts } from '../redux/actions/index';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FeedScreen from './main/Feed';
@@ -18,8 +18,9 @@ const EmptyScreen = () => {
 
 export class Main extends Component {
     componentDidMount() {
-        this.props.fetchUser()
-        this.props.fetchUserPosts()
+        this.props.fetchUser();
+        this.props.fetchUserPosts();
+        this.props.fetchUserFollowing();
     }
     render() {
         return (
@@ -63,6 +64,6 @@ const mapStateToProps = (store) => ({
     currentUser: store.userState.currentUser
 })
 
-const mapDispatchProps = (dispatch) => bindActionCreators({ fetchUser, fetchUserPosts }, dispatch);
+const mapDispatchProps = (dispatch) => bindActionCreators({ fetchUser, fetchUserPosts, fetchUserFollowing }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchProps) (Main);
