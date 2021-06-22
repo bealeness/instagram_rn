@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Image, FlatList, Button  } from 'react-native';
+import { SnapshotViewIOSComponent } from 'react-native';
 import firebase from 'firebase';
 require('firebase/firestore');
 import { connect } from 'react-redux';
@@ -70,6 +71,10 @@ function Profile(props) {
             .delete()
     }
 
+    const onLogout = () => {
+        firebase.auth().signOut();
+    }
+
     if(user===null) {
         return <View />
     }
@@ -79,25 +84,31 @@ function Profile(props) {
     return (
         <View style={ styles.container }>
             <View style={ styles.containerInfo }>
-                <Text>{ user.username }</Text>
-                <Text>{ user.email }</Text> 
+                <Text style={ styles.text }>{ user.username }</Text>
+                <Text style={ styles.text }>{ user.email }</Text> 
 
                 {props.route.params.uid !== firebase.auth().currentUser.uid ? (
                     <View>
                         {following ? (
                             <Button 
                                 title="Following"
+                                style={ styles.button }
                                 onPress={() => onUnfollow()}
                             />
                         ) : 
                         (
                             <Button 
                                 title="Follow"
+                                style={ styles.button }
                                 onPress={() => onFollow()}
                             />
                         )}
                     </View>
-                ) : null }  
+                ) : <Button 
+                        title="Logout"
+                        style={ styles.button }
+                        onPress={() => onLogout()}
+                    /> }  
 
             </View>
             <View style={ styles.containerGallery }>
@@ -142,7 +153,15 @@ const styles = StyleSheet.create({
     image: {
         flex: 1,
         aspectRatio: 1/1
-    }
+    },
+    button: {
+        color: "white",
+        backgroundColor: "blue"
+    },
+    text: {
+        fontSize: 20,
+        paddingTop: 5
+    } 
 })
 
 export default connect(mapStateToProps, null) (Profile);

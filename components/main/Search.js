@@ -37,7 +37,7 @@ export default function Search(props) {
                     <TouchableOpacity
                         onPress={() => props.navigation.navigate("Profile", { uid: item.id} )}
                     >
-                        <Text>{ item.username }</Text>
+                        <Text style={{ marginTop: 20, fontSize: 20 }}>{ item.username }</Text>
                     </TouchableOpacity>
                 )}
             />
